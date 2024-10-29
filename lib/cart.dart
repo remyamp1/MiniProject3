@@ -13,10 +13,7 @@ class Cartexample extends StatelessWidget{
       appBar: AppBar(title: Text(
         "CART",style: TextStyle(fontSize: 25),
       ),backgroundColor: const Color.fromARGB(255, 178, 219, 253),),
-      body:Container(
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/image/backgroun.jpeg"),
-        fit: BoxFit.cover)),
-      child:  Column(
+      body:Column(
          children: [
            Container(
             height: 150,
@@ -116,7 +113,7 @@ class Cartexample extends StatelessWidget{
                                      
                     
                    ),
-SizedBox(height: 10,),
+      SizedBox(height: 10,),
                  
                    Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -158,7 +155,7 @@ SizedBox(height: 10,),
                     
                     
                     
-
+      
                     
                                  
                  
@@ -217,16 +214,7 @@ SizedBox(height: 10,),
                   ),
                 )
          ],
-       ),
-      
-      
-
-
-      
-      
-        
-        
-      )  
+       )  
         
     );
   }
