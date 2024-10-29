@@ -101,7 +101,7 @@ class _PaymentPageState extends State<PaymentPage> {
                          child:Row(
                               children: [
                                 Center(child: Text('Pay')),
-                                Icon(Icons.currency_rupee),
+                                Icon(Icons.currency_rupee,size: 15,),
                                 Text(' ')
                               ],
                             ) ,
@@ -168,7 +168,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 SizedBox(height: 8),
               Row(
                 children: [
-                  Icon(Icons.currency_rupee),
+                  Icon(Icons.currency_rupee,size: 15,),
                   SizedBox(width: 8),
               Text('Cash on Delivery'),
                 Spacer(),

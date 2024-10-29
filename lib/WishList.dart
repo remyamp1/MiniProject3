@@ -13,11 +13,7 @@ class WishList extends StatelessWidget{
       appBar: AppBar(title: Text(
         "WishList",style: TextStyle(fontSize: 25),
       ),backgroundColor: const Color.fromARGB(255, 178, 219, 253),),
-      body:Container(
-        decoration: BoxDecoration(image:
-         DecorationImage(image: AssetImage("assets/image/backgroun.jpeg"),
-        fit: BoxFit.cover)),
-      child:  Column(
+      body:Column(
          children: [
            Container(
             height: 100,
@@ -67,33 +63,27 @@ class WishList extends StatelessWidget{
              ),
                   SizedBox(height: 70,),
                 
-                      Container(
-                        height: 30,
-                        width: 100,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)
-                        ,color: const Color.fromARGB(255, 245, 85, 138),),
-                        child: GestureDetector(
-                          onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Cartexample(
-                      imagepath: imagepath,
-                      name: name,
-                       price:price)));
-                    
-                          },
-                          child: Text("Add to Cart",style: TextStyle(color: Colors.white),)),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 450,left: 170),
+                        child: Container(
+                          height: 30,
+                          width: 100,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)
+                          ,color: const Color.fromARGB(255, 245, 85, 138),),
+                          child: GestureDetector(
+                            onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Cartexample(
+                        imagepath: imagepath,
+                        name: name,
+                         price:price)));
+                                            
+                            },
+                            child: Text("Add to Cart",style: TextStyle(color: Colors.white),)),
+                        ),
                       )
                     
          ],
-       ),
-      
-      
-
-
-      
-      
-        
-        
-      )  
+       )  
         
     );
   }

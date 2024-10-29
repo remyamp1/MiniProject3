@@ -10,32 +10,19 @@ class LoginExample extends StatefulWidget {
 }
 
 class _LoginExampleState extends State<LoginExample> {
+   late Box box;
    TextEditingController usernameController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
-    late Box box;
+   
         String _loginmassage='';
 
-  @override
+ 
   void initState(){
     super.initState();
     box=Hive.box('mybox');
 
   }
 
-  void _login(){
-    setState(() {
-      String storedusername=box.get('username');
-      String storedpassword=box.get('password');
-      if(storedusername==usernameController.text &&
-      storedpassword==passwordController.text){
-        _loginmassage='Login Successful';
-      }
-      else{
-        _loginmassage='invalid Credentials';
-      }
-      
-    });
-  }
   @override
 
   Widget build(BuildContext context) {
@@ -51,27 +38,78 @@ class _LoginExampleState extends State<LoginExample> {
       
                 TextFormField(
                  controller: usernameController,
-                  decoration: InputDecoration(border: OutlineInputBorder(),label:Text("Username"),),),
-                SizedBox(height: 20),
+                  decoration: InputDecoration(border: OutlineInputBorder(),label:Text("Username"),),
+                  onChanged: (text){
+                    setState(() {
+                      _loginmassage='';
+                    });
+                  }),
+            
                 
             
                 SizedBox(height: 10),
       
                 TextFormField(
              controller: passwordController,
-                  decoration: InputDecoration(border: OutlineInputBorder(),label:Text("Password"),),),
+                  decoration: InputDecoration(border: OutlineInputBorder(),label:Text("Password"),),
+                  onChanged: (text) {
+                    setState(() {
+                      _loginmassage='';
+                    });
+                  },
+                  ),
+            
                 SizedBox(height: 80),
+          
                 ElevatedButton(onPressed: (){
+                  List<dynamic> usersListDynamic=box.get('itemsList',
+                  defaultValue: []);
+                  List<Map<String,String>> usersList=usersListDynamic.map((e)=>Map<String,String>.from(e as Map)).toList();
+                  bool userFound=false;
+                  bool passwordCorrect=false;
+                  for (var user in usersList){
+                    if
+                    (user[ 'fullname']==passwordController.text){
+                      userFound=true;
+                      if
+                      (user[ 'password']== passwordController.text){
+                        passwordCorrect=true;
+                        break;
+                      }
+                    }
+                  }
+                  if (userFound && passwordCorrect){
+                    setState(() {
+                      _loginmassage='Login successful';
+                    });
+                  
+                  
        Navigator.push(context,
         MaterialPageRoute(builder: (context)=>ScreenFirst()));
-                  _login();
-                }, style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 153, 151, 250),),
+
+        usernameController.clear();
+        passwordController.clear();
+      
+                 }
+                 else if 
+                 (userFound){
+                  setState(() {
+                    _loginmassage='Incorrect password.';
+                  });
+                  
+                 } else{
+                  setState(() {
+                    _loginmassage='Username not fount.';
+                  });
+                 }
+              
+                  }, style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 153, 151, 250),),
                  child: Text("Login")),
                 Text( _loginmassage)
               ],
             ),
           ),
-        )
+    ),
     );
   }
 }

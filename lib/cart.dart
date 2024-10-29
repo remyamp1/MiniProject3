@@ -41,11 +41,11 @@ class Cartexample extends StatelessWidget{
                  Text(name),
                ]
                   ),
+                  SizedBox(height:5),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                
                     children: [
-                 Icon(Icons.currency_rupee),
+                 Icon(Icons.currency_rupee,size: 15,),
                  Text(price,style: TextStyle(fontSize: 20),),    Text("  9% off",style: TextStyle(color: const Color.fromARGB(255, 110, 108, 108)),)
                
                ],
@@ -134,23 +134,12 @@ class Cartexample extends StatelessWidget{
                           ),
                           Spacer(),
                           Text("+",style: TextStyle(fontSize: 15)),
-                          Icon(Icons.currency_rupee),
+                          Icon(Icons.currency_rupee,size: 15,),
                           Text(price,style: TextStyle(fontSize: 20),)
                         ],
                       ),
                       SizedBox(height: 5),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("Total Discounts",style: TextStyle(color: Colors.green)),
-                          ),
-                          Spacer(),
-                          Text("-",style: TextStyle(fontSize: 15,color: Colors.green)),
-                          Icon(Icons.currency_rupee,color: Colors.green,),
-                          Text("24",style: TextStyle(fontSize: 20,color: Colors.green))
-                        ],
-                      ),
+                    
                   
                     
                     
@@ -169,20 +158,12 @@ class Cartexample extends StatelessWidget{
                      ),
                   
                  Spacer(),
-                 Icon(Icons.currency_rupee),
+                 Icon(Icons.currency_rupee,size: 15,),
                  Padding(
                    padding: const EdgeInsets.all(8.0),
                    child: Text(price,style: TextStyle(fontSize: 20),),
                  ),
                    ]
-                 ),
-                 SizedBox(height: 10),
-                 Container(
-                  height: 30,
-                  width: double.infinity,
-                  color: const Color.fromARGB(255, 187, 241, 188),
-                  child: 
-                  Center(child: Text("Yay! Your total discount is 24",style: TextStyle(color: Colors.green),)),
                  ),
                  
                 SizedBox(height: 50,),
@@ -192,7 +173,7 @@ class Cartexample extends StatelessWidget{
                   
                   child: Row(
                     children: [
-                      Icon(Icons.currency_rupee),
+                      Icon(Icons.currency_rupee,size: 15,),
                       Text(price,style: TextStyle(fontSize: 20),),
                       Spacer(),
                       Padding(
