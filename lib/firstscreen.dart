@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:hive_app/WishList.dart';
 import 'package:hive_app/database.dart';
 import 'package:hive_app/descreption.dart';
@@ -9,7 +10,19 @@ class ScreenFirst extends StatefulWidget {
 }
 
 class _ScreenFirstState extends State<ScreenFirst> {
+
+   late Box box;
+    List<Map<String,String>>  todoitems=[];
+        String _loginmassage='';
+
+ 
+  void initState(){
+    super.initState();
+    box=Hive.box('mybox');
+
+  }
   @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -20,9 +33,11 @@ class _ScreenFirstState extends State<ScreenFirst> {
           
           GestureDetector(
             onTap: () {
-          Navigator.push(context,MaterialPageRoute(builder: (context)=>WishList()));
+          
             },
-            child: Icon(Icons.favorite))
+            child: IconButton(onPressed: (){
+            
+            }, icon:Icon(Icons.favorite)))
         ],backgroundColor: const Color.fromARGB(255, 178, 219, 253)
       ),
       body: Column(
@@ -82,9 +97,15 @@ class _ScreenFirstState extends State<ScreenFirst> {
                   Spacer(),
                    GestureDetector(
                      onTap: () {
-                       Navigator.push(context, MaterialPageRoute(builder: (context)=>WishList(imagepath:Database.MyList[index]['image'],
-                       name: Database.MyList[index]['name'], price: Database.MyList[index]['price'])));
-                     },
+                       void _addtodoitem(String task){
+    if(task.isNotEmpty){
+    setState(() {
+    todoitems.add(task);
+
+    });}
+ }
+                       
+},
                      child: Icon(Icons.favorite))
                 ],
               ),
