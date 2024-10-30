@@ -16,7 +16,13 @@ class _ScreenFirstState extends State<ScreenFirst> {
         leading: Icon(Icons.arrow_back),
         title: Center(child: Text('SWEATSHIRT',style: TextStyle(fontSize: 20),)),
         actions: [
-          Icon(Icons.shopping_bag)
+          Icon(Icons.shopping_bag),
+          
+          GestureDetector(
+            onTap: () {
+          Navigator.push(context,MaterialPageRoute(builder: (context)=>WishList()));
+            },
+            child: Icon(Icons.favorite))
         ],backgroundColor: const Color.fromARGB(255, 178, 219, 253)
       ),
       body: Column(

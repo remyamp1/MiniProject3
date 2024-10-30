@@ -69,10 +69,10 @@ class _LoginExampleState extends State<LoginExample> {
                   bool passwordCorrect=false;
                   for (var user in usersList){
                     if
-                    (user[ 'fullname']==passwordController.text){
+                    (user['fullname']==usernameController.text){
                       userFound=true;
                       if
-                      (user[ 'password']== passwordController.text){
+                      (user['password']== passwordController.text){
                         passwordCorrect=true;
                         break;
                       }
@@ -103,9 +103,9 @@ class _LoginExampleState extends State<LoginExample> {
                   });
                  }
               
-                  }, style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 153, 151, 250),),
+                  }, 
                  child: Text("Login")),
-                Text( _loginmassage)
+                Text("$_loginmassage"),
               ],
             ),
           ),

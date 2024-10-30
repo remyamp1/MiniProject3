@@ -17,7 +17,7 @@ late Box box;
   TextEditingController confirmpasswordController=TextEditingController();
  TextEditingController phonenoController=TextEditingController();
 TextEditingController createController=TextEditingController();
-   List<Map<String,String>> itemList=[];
+   List<Map<String,String>> itemsList=[];
    String _registrationmessage='';
   @override
   void initState(){
@@ -38,7 +38,7 @@ TextEditingController createController=TextEditingController();
            child: Column(
              mainAxisAlignment: MainAxisAlignment.start,
              children: [
-               Text("CREATE NEW ACCOUNT",style: TextStyle(fontSize: 20,color: Colors.white),),
+               Text("CREATE NEW ACCOUNT",style: TextStyle(fontSize: 20,color: const Color.fromARGB(255, 211, 151, 250)),),
            SizedBox(height: 30),
                TextFormField(
                   controller: fullnameController,
@@ -84,11 +84,11 @@ TextEditingController createController=TextEditingController();
                         _registrationmessage='All fields are required';
                          return;
                          }
-            if(passwordController.text !=passwordController.text){
+            if(passwordController.text !=confirmpasswordController.text){
              _registrationmessage='Password do not match';
              return;
             }             
-                  itemList.add({
+                  itemsList.add({
                    'fullname':fullnameController.text,
                    'email':emailController.text,
                    'password':passwordController.text,
@@ -97,22 +97,22 @@ TextEditingController createController=TextEditingController();
                   });   
                     box.put(
                'itemsList',
-                itemList.map((e)=>Map<String,dynamic>.from(e)
+                itemsList.map((e)=>Map<String,dynamic>.from(e)
                ).toList(),
                );
                fullnameController.clear();
                emailController.clear();
                passwordController.clear();
                confirmpasswordController.clear();
-               passwordController.clear();
+      
                _registrationmessage="Registration Successful";
                        
                        Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginExample()));
                      });
-                     print('Registered Items:$itemList');
+                     print('Registered Items:$itemsList');
                      },
                      
-                     child: Text("Create an Account",style: TextStyle(fontSize: 20),)),
+                     child: Text("Create an Account",style: TextStyle(fontSize: 20))),
                  
                  ),
                
@@ -127,7 +127,7 @@ TextEditingController createController=TextEditingController();
                    ElevatedButton(onPressed: (){
                            GestureDetector(
                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginExample()));
+                                Navigator.push(context, MaterialPageRoute(builder:(context)=>LoginExample()));
                              },
                            );    
                      
