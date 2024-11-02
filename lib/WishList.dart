@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hive_app/cart.dart';
 
 class WishList extends StatelessWidget{
-   final String imagepath;
-  final String name;
-  final String price;
+   final List<Map<String,String>> wishlistItems;
 
-  WishList({required this.imagepath,required this.name,required this.price});
+
+  WishList({required this.wishlistItems});
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -18,19 +17,20 @@ class WishList extends StatelessWidget{
       ],
       ),
       body:ListView.builder(
-        itemCount: 1,
+        itemCount: wishlistItems.length,
+        scrollDirection: Axis.vertical,
       itemBuilder: (context,index){
 return ListTile(
-  leading:  Image.asset(imagepath),
-  title: Text(name),
-  subtitle:  Text(price,style: TextStyle(fontSize: 15),),
+  leading:  Image(image: AssetImage(wishlistItems[index]['image']!),),
+  title: Text(wishlistItems[index]['name']!),
+  subtitle:  Text(wishlistItems[index]['price']!),
   trailing: 
        ElevatedButton(
                  onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Cartexample(
-                        imagepath: imagepath,
-                        name: name,
-                         price:price)));
+                        imagepath:wishlistItems[index]['image']!,
+                        name:wishlistItems[index]['name']!,
+                         price:wishlistItems[index]['price']!)));
                                             
                             },style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
                             child: Text("Add to Cart",style: TextStyle(color: Colors.white),)),
